@@ -27,13 +27,13 @@ extension Codic {
             }
             
             /// Text
-            let text: String
+            public let text: String
             /// Labels
-            let labels: [String]
+            public let labels: [String]
             /// Note
-            let note: String?
+            public let note: String?
             /// Notation
-            let notation: Notation
+            public let notation: Notation
             
             /**
             Initializer
@@ -42,7 +42,7 @@ extension Codic {
             
             :returns: self
             */
-            init?(dictionary: NSDictionary) {
+            public init?(dictionary: NSDictionary) {
                 if
                     let text = dictionary["text"] as? String,
                     let labels = dictionary["labels"] as? [String],
@@ -65,15 +65,15 @@ extension Codic {
         public struct Translation {
             
             /// Text
-            let text: String
+            public let text: String
             /// Labels
-            let labels: [String]
+            public let labels: [String]
             /// Note
-            let note: String?
+            public let note: String?
             /// Etymology
-            let etymology: Int
+            public let etymology: Int
             /// Pos
-            let pos: String
+            public let pos: String
             
             /**
             Initializer
@@ -82,7 +82,7 @@ extension Codic {
             
             :returns: self
             */
-            init?(dictionary: NSDictionary) {
+            public init?(dictionary: NSDictionary) {
                 if
                     let text = dictionary["text"] as? String,
                     let labels = dictionary["labels"] as? [String],
@@ -106,11 +106,11 @@ extension Codic {
         public struct HeadWord {
             
             /// CED id
-            let id: Int
+            public let id: Int
             /// CED title
-            let title: String
+            public let title: String
             /// CED digest
-            let digest: String
+            public let digest: String
             
             /**
             Initializer
@@ -119,7 +119,7 @@ extension Codic {
             
             :returns: self
             */
-            init?(dictionary: NSDictionary) {
+            public init?(dictionary: NSDictionary) {
                 if
                     let id = dictionary["id"] as? Int,
                     let title = dictionary["title"] as? String,
@@ -140,13 +140,13 @@ extension Codic {
         public struct Entry {
             
             /// CED id
-            let id: Int
+            public let id: Int
             /// CED title
-            let title: String
+            public let title: String
             /// Transciptions
-            let transcriptions: [Transcription]
+            public let transcriptions: [Transcription]
             /// Translations
-            let translations: [Translation]
+            public let translations: [Translation]
             
             /**
             Initializer
@@ -155,7 +155,7 @@ extension Codic {
             
             :returns: self
             */
-            init?(dictionary: NSDictionary) {
+            public init?(dictionary: NSDictionary) {
                 if
                     let id = dictionary["id"] as? Int,
                     let title = dictionary["title"] as? String,

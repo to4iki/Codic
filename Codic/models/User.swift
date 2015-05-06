@@ -14,9 +14,9 @@ extension Codic {
     public struct User {
         
         /// User id
-        let id: Int
+        public let id: Int
         /// User name
-        let name: String
+        public let name: String
         
         /**
         Initializer
@@ -25,7 +25,7 @@ extension Codic {
         
         :returns: self
         */
-        init?(dictionary: NSDictionary) {
+        public init?(dictionary: NSDictionary) {
             if
                 let id = dictionary["id"] as? Int,
                 let name = dictionary["name"] as? String

@@ -34,9 +34,9 @@ extension Codic {
     public struct Translation {
         
         /// Success of translate
-        let successful: Bool
+        public let successful: Bool
         /// Translation resule
-        let translatedText: String
+        public let translatedText: String
         
         /**
         Initializer
@@ -45,7 +45,7 @@ extension Codic {
         
         :returns: self
         */
-        init?(dictionary: NSDictionary) {
+        public init?(dictionary: NSDictionary) {
             if
                 let successful = dictionary["successful"] as? Bool,
                 let translatedText = dictionary["translated_text"] as? String {

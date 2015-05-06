@@ -14,17 +14,17 @@ extension Codic {
     public struct UserDictionary {
         
         /// User dictionary id
-        let id: Int
+        public let id: Int
         /// User dictionary name
-        let name: String
+        public let name: String
         /// Count
-        let wordsCount: Int
+        public let wordsCount: Int
         /// Is share
-        let shared: Bool
+        public let shared: Bool
         /// Created date
-        let createdOn: NSDate
+        public let createdOn: NSDate
         /// User
-        let owner: User
+        public let owner: User
         
         /// formatter
         private static var dateFormatter: NSDateFormatter {
@@ -40,7 +40,7 @@ extension Codic {
         
         :returns: self
         */
-        init?(dictionary: NSDictionary) {
+        public init?(dictionary: NSDictionary) {
             if
                 let id = dictionary["id"] as? Int,
                 let name = dictionary["name"] as? String,
