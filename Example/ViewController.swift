@@ -11,29 +11,22 @@ import Codic
 
 class ViewController: UIViewController {
     
-    let client = Codic.Client(accessKey: "fxaVjZhq2WFK")
-    //    let client = Codic.Client(accessKey: "test")
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    let client = Codic.Client(accessKey: "your api access_key")
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let request = client.fetchUserDictionaries()
-        request.fold(
-            resolve: { dictionaries in
-                for dictionary in dictionaries {
-                    println(dictionary.description)
+        let request = client.lookup("term")
+        request.onComplete(
+            resolve: {
+                for result in $0 {
+                    println(result.description)
                 }
             },
-            reject: { error in
-                println(error)
+            reject: {
+                println($0.description)
             }
         )
-        
-        
         request.resume()
     }
 }
