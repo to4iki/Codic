@@ -13,13 +13,13 @@ extension Codic {
     */
     public struct User {
         
-        /// user id
+        /// User id
         let id: Int
-        /// user name
+        /// User name
         let name: String
         
         /**
-        initializer
+        Initializer
         
         :param: dictionary json object
         
@@ -42,6 +42,6 @@ extension Codic {
 /// MARK: - Printable
 extension Codic.User: Printable {
     public var description: String {
-        return "User: id: \(id), name: \(name)"
+        return "User(id: \(id), name: \(name))"
     }
 }

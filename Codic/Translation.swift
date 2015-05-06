@@ -8,6 +8,9 @@
 
 extension Codic {
     
+    /**
+    Convert Naming Case
+    */
     public enum Casing: String {
         case Camel = "camel"
         case Pascal = "pascal"
@@ -16,6 +19,9 @@ extension Codic {
         case Hyphen = "hyphen"
     }
     
+    /**
+    Acronym Style
+    */
     public enum AcronymStyle: String {
         case MSNamingGuidelines = "MS naming guidelines"
         case CamelStrict = "camel strict"
@@ -27,13 +33,13 @@ extension Codic {
     */
     public struct Translation {
         
-        /// success of translate
+        /// Success of translate
         let successful: Bool
-        /// translation resule
+        /// Translation resule
         let translatedText: String
         
         /**
-        initializer
+        Initializer
         
         :param: dictionary json object
         
@@ -55,6 +61,6 @@ extension Codic {
 /// MARK: - Printable
 extension Codic.Translation: Printable {
     public var description: String {
-        return "Translation: successful: \(successful), translated_text: \(translatedText)"
+        return "Translation(successful: \(successful), translatedText: \(translatedText))"
     }
 }

@@ -13,15 +13,28 @@ extension Codic {
     */
     public struct UserDictionary {
         
+        /// User dictionary id
         let id: Int
+        /// User dictionary name
         let name: String
+        /// Count
         let wordsCount: Int
+        /// Is share
         let shared: Bool
-//        let createdOn: NSDate
+        /// Created date
+        let createdOn: NSDate
+        /// User
         let owner: User
         
+        /// formatter
+        private static var dateFormatter: NSDateFormatter {
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            return formatter
+        }
+        
         /**
-        initializer
+        Initializer
         
         :param: dictionary json object
         
@@ -33,6 +46,7 @@ extension Codic {
                 let name = dictionary["name"] as? String,
                 let wordsCount = dictionary["words_count"] as? Int,
                 let shared = dictionary["shared"] as? Bool,
+                let createdOnTimestamp = dictionary["created_on"] as? String,
                 let ownerDictionary = dictionary["owner"] as? NSDictionary,
                 let user = User(dictionary: ownerDictionary)
             {
@@ -40,6 +54,7 @@ extension Codic {
                 self.name = name
                 self.wordsCount = wordsCount
                 self.shared = shared
+                self.createdOn = Codic.UserDictionary.dateFormatter.dateFromString(createdOnTimestamp) ?? NSDate()
                 self.owner = user
             } else {
                 return nil
@@ -51,6 +66,6 @@ extension Codic {
 /// MARK: - Printable
 extension Codic.UserDictionary: Printable {
     public var description: String {
-        return "UserDictionary: id: \(id), name: \(name), words_count: \(wordsCount), owner: \(owner.description)"
+        return "UserDictionary(id: \(id), name: \(name), wordsCount: \(wordsCount), createdOn :\(createdOn), owner: \(owner.description))"
     }
 }
