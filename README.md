@@ -1,17 +1,12 @@
 Codic
 =====
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
-[![CocoaPods version](https://img.shields.io/cocoapods/v/Codic.svg?style=flat)][cocoapods]
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
-[![Platform](https://img.shields.io/cocoapods/p/Codic.svg?style=flat)][platform]
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Version](https://img.shields.io/cocoapods/v/Codic.svg?style=flat)](http://cocoadocs.org/docsets/Codic)
+[![License](https://img.shields.io/cocoapods/l/Codic.svg?style=flat)](http://cocoadocs.org/docsets/Codic)
+[![Platform](https://img.shields.io/cocoapods/p/Codic.svg?style=flat)](http://cocoadocs.org/docsets/Codic)
 
-[carthage]: https://github.com/Carthage/Carthage
-[cocoapods]: http://cocoadocs.org/docsets/Codic
-[license]: https://github.com/to4iki/Codic/master/LICENSE
-[platform]: http://cocoadocs.org/docsets/Codic
-
-[API Reference - codic](https://next.codic.jp/docs/api).
+[API Reference - codic](https://next.codic.jp/docs/api)
 
 ## Description
 codic API v1 client for Swift.
@@ -26,7 +21,6 @@ codic API v1 client for Swift.
 ```swift
 let client = Codic.Client(accessKey: "your api access_key")
 
-let request = client.getItems(parameters: parameters)
 let request = client.lookup("term")
 request.onComplete(
     resolve: {
