@@ -11,50 +11,68 @@
 */
 public class Request<T>: NSObject {
     
-    /// concrete data task
+    /// Concrete data task
     private var task: NSURLSessionDataTask?
-    /// on resolve event
-    private var onResolveHandler: ((T) -> Void)?
-    /// on reject event
-    private var onRejectHandler: ((NSError) -> Void)?
+    /// Complete event
+    private var onSuccessHandler: ((T) -> Void)?
+    /// Failure event
+    private var onFailureHandler: ((NSError) -> Void)?
+    
+    /// Returns whether the request has already been completed with a success or failure
+    public var isComplete: Bool {
+        return onSuccessHandler != nil && onFailureHandler != nil
+    }
     
     public override init() {
         super.init()
     }
     
     func resolve(value: T) {
-        onResolveHandler?(value)
+        onSuccessHandler?(value)
     }
     
     func reject(error: NSError) {
-        onRejectHandler?(error)
+        onFailureHandler?(error)
     }
     
-    public func resolve(handler: (T) -> Void) -> Request<T> {
-        onResolveHandler = handler
+    public func onSuccess(handler: (T) -> Void) -> Request<T> {
+        onSuccessHandler = handler
         return self
     }
     
-    public func reject(handler: (NSError) -> Void) -> Request<T> {
-        onRejectHandler = handler
+    public func onFailure(handler: (NSError) -> Void) -> Request<T> {
+        onFailureHandler = handler
         return self
     }
     
-    public func fold(#resolve: (T) -> Void, reject: (NSError) -> Void) -> Request<T> {
-        onResolveHandler = resolve
-        onRejectHandler = reject
+    public func onComplete(#resolve: (T) -> Void, reject: (NSError) -> Void) -> Request<T> {
+        onSuccessHandler = resolve
+        onFailureHandler = reject
         return self
     }
     
-    public func resume() {
-        task?.resume()
-    }
-    
+    /**
+    Cancels the task
+    */
     public func cancel() {
         task?.cancel()
     }
     
-    func setDataTaskWithSession(session: NSURLSession, url: NSURL, resolveHandler: (AnyObject?) -> Void) {
+    /**
+    Resumes the task, if it is suspended
+    */
+    public func resume() {
+        task?.resume()
+    }
+    
+    /**
+    Temporarily suspends a task
+    */
+    public func suspend() {
+        task?.suspend()
+    }
+    
+    func setDataTaskWithSession(session: NSURLSession, url: NSURL, successHandler: (AnyObject?) -> Void) {
         task = session.dataTaskWithURL(url) { [weak self] data, URLResponse, connectionError in
             if let connectionError = connectionError {
                 self?.reject(connectionError)
@@ -69,10 +87,7 @@ public class Request<T>: NSObject {
                 return
             }
             
-            println("===")
-            println(json.description)
-            
-            resolveHandler(json)
+            successHandler(json)
         }
     }
 }

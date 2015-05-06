@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E04908A1AF741C7001A7DF3 /* UserDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0490891AF741C7001A7DF3 /* UserDictionary.swift */; };
 		1E04908C1AF741FC001A7DF3 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E04908B1AF741FC001A7DF3 /* Translation.swift */; };
+		1E1C991D1AF8CE7600B73434 /* CodicEnglishDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C991C1AF8CE7600B73434 /* CodicEnglishDictionary.swift */; };
 		1E22A5A11AF7797800542076 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22A5A01AF7797800542076 /* User.swift */; };
 		1E62E7EA1AF8A0ED00FC95A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62E7E91AF8A0ED00FC95A8 /* AppDelegate.swift */; };
 		1E62E7EC1AF8A0ED00FC95A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62E7EB1AF8A0ED00FC95A8 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		1E0490891AF741C7001A7DF3 /* UserDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDictionary.swift; sourceTree = "<group>"; };
 		1E04908B1AF741FC001A7DF3 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		1E1C991C1AF8CE7600B73434 /* CodicEnglishDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodicEnglishDictionary.swift; sourceTree = "<group>"; };
 		1E22A5A01AF7797800542076 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1E62E7E51AF8A0ED00FC95A8 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E62E7E81AF8A0ED00FC95A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				1E04908B1AF741FC001A7DF3 /* Translation.swift */,
 				1E22A5A01AF7797800542076 /* User.swift */,
 				1E0490891AF741C7001A7DF3 /* UserDictionary.swift */,
+				1E1C991C1AF8CE7600B73434 /* CodicEnglishDictionary.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EB779A41AF72369001F9C0D /* Codic.swift in Sources */,
+				1E1C991D1AF8CE7600B73434 /* CodicEnglishDictionary.swift in Sources */,
 				1E04908A1AF741C7001A7DF3 /* UserDictionary.swift in Sources */,
 				1EB779A61AF723E0001F9C0D /* Request.swift in Sources */,
 				1E04908C1AF741FC001A7DF3 /* Translation.swift in Sources */,

@@ -16,15 +16,15 @@ public struct Codic {
     */
     public class Client {
         
-        /// access key
+        /// Access key
         private let accessKey: String
-        /// session
+        /// Session
         private let URLSession = NSURLSession.sharedSession()
-        /// api endpoint
+        /// API Endpoint
         static let endPoint: String = "https://api.codic.jp"
         
         /**
-        initializer
+        Initializer
         
         :param: accessKey api access_key
         
@@ -37,7 +37,7 @@ public struct Codic {
         /// MARK: - URL Builder
         
         /**
-        building Request URL
+        Building Request URL
         
         :param: path       api path
         :param: parameters api parameters
@@ -64,19 +64,41 @@ public struct Codic {
 /// MARK: - GET /v1/engine/translate.json
 extension Codic.Client {
     
-    // TODO
-    public func translate() -> Request<Codic.Translation> {
+    /**
+    Translate naming
+    https://next.codic.jp/docs/api#engine
+    
+    :param: text         japanies text
+    :param: dictionaryId dictionary id
+    :param: casing       translate case
+    :param: acronymStyle translate style
+    :param: decoding     valid decoding
+    
+    :returns: Request<Codic.Translation>
+    */
+    public func translate(text: String, dictionaryId: String, casing: Codic.Casing? = nil, acronymStyle: Codic.AcronymStyle? = nil, decoding: Bool = true) -> Request<Codic.Translation> {
+        
+        func buildParameters() -> [String:AnyObject] {
+            var params: [String:AnyObject] = [
+                "access_key": accessKey,
+                "text": text,
+                "dictionary_id": dictionaryId,
+                "decoding": decoding.description
+            ]
+            if let casing = casing?.rawValue {
+                params["casig"] = casing
+            }
+            if let acronymStyle = acronymStyle?.rawValue {
+                params["acronym_style"] = acronymStyle
+            }
+            
+            return params
+        }
+        
         let request = Request<Codic.Translation>()
         let url = buildURL(
             "/v1/engine/translate.json",
-            parameters: [
-                "access_key": accessKey,
-                "text": "",
-                "dictionary_id": "",
-                "casing ": "",
-                "acronym_style ": "",
-                "decoding": ""
-            ]
+            parameters: buildParameters()
         )
         
         request.setDataTaskWithSession(URLSession, url: url) { object in
@@ -95,7 +117,8 @@ extension Codic.Client {
 extension Codic.Client {
     
     /**
-    fetch user dictionary list
+    Fetch user dictionary list
+    https://next.codic.jp/docs/api#user_dictionaries
     
     :returns: Request<[Codic.Dictionary]>
     */
@@ -114,7 +137,6 @@ extension Codic.Client {
                         result.append(userDictionary)
                     }
                 }
-                
                 request.resolve(result)
             }
         }
@@ -127,13 +149,14 @@ extension Codic.Client {
 extension Codic.Client {
     
     /**
-    fetch user dictionary
+    Fetch user dictionary
+    https://next.codic.jp/docs/api#user_dictionary
     
     :param: id dictionary id
     
     :returns: Request<Codic.Dictionary>
     */
-    public func fetchUserDictionary(id: String) -> Request<Codic.UserDictionary> {
+    public func fetchUserDictionary(id: Int) -> Request<Codic.UserDictionary> {
         let request = Request<Codic.UserDictionary>()
         let url = buildURL(
             "/v1/user_dictionary/\(id).json",
@@ -154,8 +177,72 @@ extension Codic.Client {
 
 /// MARK: - GET /v1/ced/lookup.json
 extension Codic.Client {
+    
+    /// Lookup default count
+    static let defaultLookupCount = 10
+    
+    /**
+    Lookup CED head word
+    https://next.codic.jp/docs/api#ced_lookup
+    
+    :param: query string
+    :param: count max count(default 10)
+    
+    :returns: Request<[Codic.CodicEnglishDictionary.HeadWord]>
+    */
+    public func lookup(query: String, count: Int = Codic.Client.defaultLookupCount) -> Request<[Codic.CodicEnglishDictionary.HeadWord]> {
+        let request = Request<[Codic.CodicEnglishDictionary.HeadWord]>()
+        let url = buildURL(
+            "/v1/ced/lookup.json",
+            parameters: [
+                "access_key": accessKey,
+                "query": query,
+                "count": count
+            ]
+        )
+        
+        request.setDataTaskWithSession(URLSession, url: url) { object in
+            if let dictionaries = object as? [NSDictionary] {
+                var result: [Codic.CodicEnglishDictionary.HeadWord] = []
+                for dictionary in dictionaries {
+                    if let headWord = Codic.CodicEnglishDictionary.HeadWord(dictionary: dictionary) {
+                        result.append(headWord)
+                    }
+                }
+                request.resolve(result)
+            }
+        }
+        
+        return request
+    }
 }
 
 /// MARK: - GET /v1/ced/entries/:id.json
 extension Codic.Client {
+    
+    /**
+    Fetch CED entry
+    https://next.codic.jp/docs/api#ced_entry
+    
+    :param: id CED id
+    
+    :returns: Request<[Codic.CodicEnglishDictionary.Entry]>
+    */
+    public func fetchCEDEntry(id: Int) -> Request<Codic.CodicEnglishDictionary.Entry> {
+        let request = Request<Codic.CodicEnglishDictionary.Entry>()
+        let url = buildURL(
+            "/v1/ced/entries/\(id).json",
+            parameters: ["access_key": accessKey]
+        )
+        
+        request.setDataTaskWithSession(URLSession, url: url) { object in
+            if let dictionary = object as? NSDictionary {
+                if let entry = Codic.CodicEnglishDictionary.Entry(dictionary: dictionary) {
+                    request.resolve(entry)
+                }
+            }
+        }
+        
+        return request
+    }
 }
