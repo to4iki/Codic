@@ -11,7 +11,8 @@ import Codic
 
 class ViewController: UIViewController {
     
-    let client = Codic.Client(accessKey: "your api access_key")
+    // your api access_key
+    let client = Codic.Client(accessKey: SecretsPlist.getValue(.CodicAccessKey))
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,3 +32,15 @@ class ViewController: UIViewController {
     }
 }
 
+struct SecretsPlist {
+    
+    enum Key: String {
+        case CodicAccessKey = "CodicAccessKey"
+    }
+    
+    static func getValue(key: Key) -> String {
+        let secretsURL = NSBundle.mainBundle().URLForResource("secrets", withExtension: "plist")!
+        let secrets = NSDictionary(contentsOfURL: secretsURL)!
+        return secrets[key.rawValue] as! String
+    }
+}

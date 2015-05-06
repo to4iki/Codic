@@ -34,5 +34,10 @@ DerivedData
 
 Carthage/Build
 
+# Access Key
+CodicTests/supporting files/secrets.plist
+Example/supporting files/secrets.plist
+
 # MacOS
 .DS_Store
+

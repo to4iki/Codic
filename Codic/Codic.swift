@@ -228,7 +228,7 @@ extension Codic.Client {
     
     :returns: Request<[Codic.CodicEnglishDictionary.Entry]>
     */
-    public func fetchCEDEntry(id: Int) -> Request<Codic.CodicEnglishDictionary.Entry> {
+    public func fetchEntry(id: Int) -> Request<Codic.CodicEnglishDictionary.Entry> {
         let request = Request<Codic.CodicEnglishDictionary.Entry>()
         let url = buildURL(
             "/v1/ced/entries/\(id).json",

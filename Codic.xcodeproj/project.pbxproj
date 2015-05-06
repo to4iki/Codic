@@ -16,6 +16,8 @@
 		1E62E7EF1AF8A0ED00FC95A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E62E7ED1AF8A0ED00FC95A8 /* Main.storyboard */; };
 		1E62E7F11AF8A0ED00FC95A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E62E7F01AF8A0ED00FC95A8 /* Images.xcassets */; };
 		1E62E7F41AF8A0ED00FC95A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E62E7F21AF8A0ED00FC95A8 /* LaunchScreen.xib */; };
+		1EB10CC01AF9D88200727687 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EB10CBF1AF9D88200727687 /* secrets.plist */; };
+		1EB10CC21AF9D89300727687 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EB10CC11AF9D89300727687 /* secrets.plist */; };
 		1EB779A41AF72369001F9C0D /* Codic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB779A31AF72369001F9C0D /* Codic.swift */; };
 		1EB779A61AF723E0001F9C0D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB779A51AF723E0001F9C0D /* Request.swift */; };
 		1EE6C6631AF71F2B00C70A7B /* Codic.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EE6C6621AF71F2B00C70A7B /* Codic.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +47,8 @@
 		1E62E7EE1AF8A0ED00FC95A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E62E7F01AF8A0ED00FC95A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1E62E7F31AF8A0ED00FC95A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		1EB10CBF1AF9D88200727687 /* secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
+		1EB10CC11AF9D89300727687 /* secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
 		1EB779A31AF72369001F9C0D /* Codic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codic.swift; sourceTree = "<group>"; };
 		1EB779A51AF723E0001F9C0D /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1EE6C65D1AF71F2B00C70A7B /* Codic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Codic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				1E62E7E81AF8A0ED00FC95A8 /* Info.plist */,
+				1EB10CBF1AF9D88200727687 /* secrets.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1EE6C66E1AF71F2B00C70A7B /* Info.plist */,
+				1EB10CC11AF9D89300727687 /* secrets.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EB10CC01AF9D88200727687 /* secrets.plist in Resources */,
 				1E62E7EF1AF8A0ED00FC95A8 /* Main.storyboard in Resources */,
 				1E62E7F41AF8A0ED00FC95A8 /* LaunchScreen.xib in Resources */,
 				1E62E7F11AF8A0ED00FC95A8 /* Images.xcassets in Resources */,
@@ -299,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EB10CC21AF9D89300727687 /* secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
