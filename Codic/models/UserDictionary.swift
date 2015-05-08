@@ -11,7 +11,7 @@ extension Codic {
     /**
     *  User's Dictionary
     */
-    public struct UserDictionary {
+    public struct UserDictionary: Serializable {
         
         /// User dictionary id
         public let id: Int

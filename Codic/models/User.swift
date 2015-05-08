@@ -11,7 +11,7 @@ extension Codic {
     /**
     *  Codic User Account
     */
-    public struct User {
+    public struct User: Serializable {
         
         /// User id
         public let id: Int

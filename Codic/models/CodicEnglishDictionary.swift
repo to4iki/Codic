@@ -16,7 +16,7 @@ extension Codic {
         /**
         *  Transcription
         */
-        public struct Transcription {
+        public struct Transcription: Serializable {
             
             /**
             Notation
@@ -62,7 +62,7 @@ extension Codic {
         /**
         *  Translation
         */
-        public struct Translation {
+        public struct Translation: Serializable {
             
             /// Text
             public let text: String
@@ -103,7 +103,7 @@ extension Codic {
         /**
         *  CED Head Word
         */
-        public struct HeadWord {
+        public struct HeadWord: Serializable {
             
             /// CED id
             public let id: Int
@@ -137,7 +137,7 @@ extension Codic {
         /**
         *  CED Entry
         */
-        public struct Entry {
+        public struct Entry: Serializable {
             
             /// CED id
             public let id: Int

@@ -31,7 +31,7 @@ extension Codic {
     /**
     *  Translation Result
     */
-    public struct Translation {
+    public struct Translation: Serializable {
         
         /// Success of translate
         public let successful: Bool
